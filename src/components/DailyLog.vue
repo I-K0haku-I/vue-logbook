@@ -174,7 +174,6 @@
                 ></v-text-field>
                 <v-menu
                   :offset-overflow="true"
-                  :offset-x="true"
                   :open-on-click="true"
                   :close-on-click="true"
                   :close-on-content-click="false"
@@ -191,7 +190,6 @@
                 ></v-text-field>
                 <v-menu
                   :offset-overflow="true"
-                  :offset-x="true"
                   :open-on-click="true"
                   :close-on-click="true"
                   :close-on-content-click="false"
@@ -311,7 +309,7 @@ export default {
           content: n.content,
           name: n.content,
           detail: n.detail,
-          duration: n.duration,
+          duration: durationArray[0] + ":" + durationArray[1],
           start: moment
             .utc(n.time)
             .format()
