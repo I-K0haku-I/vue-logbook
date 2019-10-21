@@ -346,7 +346,7 @@ export default {
         content: event.content,
         detail: event.detail,
         tags: newTagsIds,
-        duration: event.duration,
+        duration: event.duration + ":00",
         time: event.date + "T" + event.time
       });
       this.selectedOpen = false;
