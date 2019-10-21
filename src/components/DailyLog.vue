@@ -309,7 +309,7 @@ export default {
           content: n.content,
           name: n.content,
           detail: n.detail,
-          duration: durationArray[0] + ":" + durationArray[1],
+          duration: n.duration.substring(0, n.duration.length - 3),
           start: moment
             .utc(n.time)
             .format()
@@ -424,6 +424,7 @@ export default {
       this.addDialog = true;
       this.date = this.today.substring(0, 10);
       this.time = this.today.substring(11);
+      this.duration = "00:00"
     },
     intervalFormat(timestamp) {
       return timestamp.time;
