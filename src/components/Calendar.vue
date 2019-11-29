@@ -187,7 +187,7 @@ export default {
   },
   methods: {
     async getEvents() {
-      let res = await axios.get("https://www.k0haku.space/b/api/notes/");
+      let res = await axios.get("https://notesbackend.k0haku.space/b/api/notes/");
       let events = [];
       res.data.forEach(n => {
         let note = {
@@ -203,13 +203,13 @@ export default {
       this.events = events;
     },
     async deleteEvent(eventId) {
-      await axios.delete(`https://www.k0haku.space/b/api/notes/${eventId}/`);
+      await axios.delete(`https://notesbackend.k0haku.space/b/api/notes/${eventId}/`);
       this.selectedOpen = false;
       this.currentlyEditing = null;
       this.getEvents();
     },
     async saveEvent(event) {
-      await axios.patch(`https://www.k0haku.space/b/api/notes/${event.id}/`, {
+      await axios.patch(`https://notesbackend.k0haku.space/b/api/notes/${event.id}/`, {
         detail: event.details
       });
       this.selectedOpen = false;
@@ -218,7 +218,7 @@ export default {
     async addEvent() {
       console.log(this.details);
       if(this.name && this.start) {
-        await axios.post(`https://www.k0haku.space/b/api/notes/`, {
+        await axios.post(`https://notesbackend.k0haku.space/b/api/notes/`, {
           time: this.start + "T00:00",
           content: this.name,
           detail: this.details
