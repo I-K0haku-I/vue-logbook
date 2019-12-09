@@ -279,7 +279,7 @@ export default {
   },
   methods: {
     async getTagsForEvents() {
-      let res = await axios.get("https://notesbackend.k0haku.space/b/api/tags/");
+      let res = await axios.get("http://notesbackend.k0haku.space/b/api/tags/");
       let tags = [];
       res.data.forEach(t => {
         let tag = {
@@ -293,7 +293,7 @@ export default {
       this.tagsForEvents = tags;
     },
     async getEvents() {
-      let res = await axios.get("https://notesbackend.k0haku.space/b/api/notes/");
+      let res = await axios.get("http://notesbackend.k0haku.space/b/api/notes/");
       await this.getTagsForEvents();
       let events = [];
       res.data.forEach(n => {
@@ -329,7 +329,7 @@ export default {
       this.events = events;
     },
     async deleteEvent(eventId) {
-      await axios.delete(`https://notesbackend.k0haku.space/b/api/notes/${eventId}/`);
+      await axios.delete(`http://notesbackend.k0haku.space/b/api/notes/${eventId}/`);
       this.selectedOpen = false;
       this.currentlyEditing = null;
       this.getEvents();
@@ -342,7 +342,7 @@ export default {
         }
       }
 
-      await axios.patch(`https://notesbackend.k0haku.space/b/api/notes/${event.id}/`, {
+      await axios.patch(`http://notesbackend.k0haku.space/b/api/notes/${event.id}/`, {
         content: event.content,
         detail: event.detail,
         tags: newTagsIds,
@@ -364,7 +364,7 @@ export default {
             let t = this.tags[i];
             if (!this.tagsForEvents.some(testT => testT.name === t)) {
               let res = await axios.post(
-                `https://notesbackend.k0haku.space/b/api/tags/`,
+                `http://notesbackend.k0haku.space/b/api/tags/`,
                 {
                   name: t
                 }
@@ -384,7 +384,7 @@ export default {
           }
         };
         await handleTags();
-        await axios.post(`https://notesbackend.k0haku.space/b/api/notes/`, {
+        await axios.post(`http://notesbackend.k0haku.space/b/api/notes/`, {
           time: this.date + "T" + this.time,
           duration: this.duration,
           content: this.content,
